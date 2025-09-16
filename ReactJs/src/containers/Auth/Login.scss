@@ -1,0 +1,126 @@
+.login-background {
+  height: 100vh;
+  background: linear-gradient(
+    135deg,
+    rgba(34, 193, 195, 1) 0%,
+    rgba(253, 187, 45, 1) 100%
+  );
+
+  .login-container {
+    width: 400px;
+    height: 450px;
+    margin: 0 auto;
+    border-radius: 10px;
+    background-color: white;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    .login-content {
+      padding: 10px;
+
+      .text-login {
+        text-align: center;
+        font-weight: 600;
+        font-size: 24px;
+        padding-top: 10px;
+      }
+
+      .login-input {
+        margin: 7px 0;
+      }
+
+      .btn-login {
+        width: 100%;
+        margin: 10px 0;
+        height: 30px;
+        border-radius: 15px;
+        outline: none;
+        border: none;
+        background: linear-gradient(
+          135deg,
+          rgba(34, 193, 195, 1) 0%,
+          rgba(253, 187, 45, 1) 100%
+        );
+        color: white;
+        font-weight: 600;
+        cursor: pointer;
+        transition: opacity 0.2s ease-in-out;
+
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+
+      .forgot-password {
+        font-size: 12px;
+        cursor: pointer;
+        color: #333;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      .text-other-login {
+        font-size: 14px;
+        color: #555;
+      }
+
+      .social-login {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+
+        .google,
+        .facebook {
+          font-size: 30px;
+          border-radius: 50%;
+          height: 50px;
+          width: 50px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          cursor: pointer;
+
+          &:hover {
+            opacity: 0.8;
+          }
+        }
+
+        .google {
+          background: #c32424;
+          margin-right: 10px;
+        }
+
+        .facebook {
+          background: #307aaf;
+        }
+      }
+
+      .custom-input-password {
+        position: relative;
+
+        input {
+          padding-right: 40px;
+        }
+
+        span {
+          position: absolute;
+          right: 10px;
+          top: 50%;
+          transform: translateY(-50%);
+          cursor: pointer;
+          color: #888;
+
+          &:hover {
+            color: #333;
+          }
+        }
+      }
+    }
+  }
+}
