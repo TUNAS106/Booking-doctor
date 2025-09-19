@@ -1,3 +1,4 @@
+import e from 'express';
 import userService from '../services/userServices';
 let handleLogin = async (req, res) => {
     let email = req.body.email;
@@ -33,5 +34,27 @@ let handleGetAllUsers = async (req, res) => {
         users
     });
 }
+let handleCreateNewUser = async (req, res) => {
+    let message = await userService.createNewUser(req.body);
+    return res.status(200).json(message);
+}
 
-export default { handleLogin, handleGetAllUsers };
+let handleDeleteUser = async (req, res) => {
+    if (!req.body.id) {
+        return res.status(200).json({
+            errCode: 1,
+            message: "Missing required parameters!"
+        });
+    }
+    let userId = req.body.id;
+    let message = await userService.deleteUser(userId);
+    return res.status(200).json(message);
+}
+
+let handleEditUser = async (req, res) => {
+    let data = req.body;
+    let message = await userService.updateUserData(data);
+    return res.status(200).json(message);
+}
+
+export default { handleLogin, handleGetAllUsers, handleCreateNewUser, handleDeleteUser, handleEditUser };
