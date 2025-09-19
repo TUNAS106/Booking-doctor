@@ -42,3 +42,33 @@ th {
   color: white;
   border-radius: 5px;
 }
+
+.modal-user-container {
+  .modal-header {
+    button {
+      background: transparent !important;
+      border: none !important;
+      color: #dddd !important;
+    }
+  }
+  .modal-user-body {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+
+    .input-container {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 15px;
+      width: 48%;
+
+      &.max-width-input {
+        width: 99%;
+      }
+      label {
+        margin-bottom: 5px;
+        font-weight: 600;
+      }
+    }
+  }
+}
