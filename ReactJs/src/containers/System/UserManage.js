@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import './UserManage.scss';
-import { getAllUsers } from '../../services/userService';
+import { getAllUsers, createNewUserToApi } from '../../services/userService';
 import ModalUser from './ModalUser';
 class UserManage extends Component {
 
@@ -16,12 +16,15 @@ class UserManage extends Component {
     }
 
     async componentDidMount() {
+        await this.getAllUsersFromReact();
+    }
+
+    getAllUsersFromReact = async () => {
         let res = await getAllUsers('ALL');
         if (res && res.errCode === 0) {
             this.setState({
                 arrUsers: res.users
             })
-            //console.log('check users', res.users);
         }
     }
 
@@ -36,6 +39,23 @@ class UserManage extends Component {
             isOpenModalUser: !this.state.isOpenModalUser,
         })
     }
+
+    createNewUser = async (data) => {
+        try {
+            let res = await createNewUserToApi(data);
+            if (res && res.errCode !== 0) {
+                alert(res.message);
+            }
+            else {
+                await this.getAllUsersFromReact();
+                this.setState({
+                    isOpenModalUser: false,
+                })
+            }
+        } catch (error) {
+            console.error('Error creating new user:', error);
+        }
+    }
     render() {
         console.log('check state', this.state);
         let arrUsers = this.state.arrUsers;
@@ -45,7 +65,7 @@ class UserManage extends Component {
                     isOpen={this.state.isOpenModalUser}
                     toggleFromParent={this.toogleUserModal}
                     className={'modal-user-container'}
-
+                    createNewUser={this.createNewUser}
                 />
                 <div className="title text-center">
                     User Manage
