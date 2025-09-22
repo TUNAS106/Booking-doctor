@@ -1,4 +1,25 @@
 {
+    "home-header": {
+        "speciality": "Medical speciality",
+        "search-doctor": "Search doctor",
+        "health-facility": "Health facility",
+        "select-room": "Select room",
+        "doctor": "Doctor",
+        "select-doctor": "Select doctor",
+        "fee": "Examination package",
+        "check-health": "General health check",
+        "support": "Support"
+    },
+    "banner": {
+        "title1": "HEALTHCARE PLATFORM",
+        "title2": "COMPREHENSIVE HEALTHCARE",
+        "child1": "Specialist examination",
+        "child2": "General examination",
+        "child3": "Testing",
+        "child4": "Mental health",
+        "child5": "Dental",
+        "child6": "Insurance examination"
+    },
     "common": {
         "add": "Add",
         "edit": "Edit",

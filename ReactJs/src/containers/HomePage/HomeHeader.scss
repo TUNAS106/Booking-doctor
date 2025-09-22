@@ -10,7 +10,7 @@
 
     .left-content {
       width: 25%;
-      border: 1px solid red;
+
       display: flex;
       align-items: center;
 
@@ -20,7 +20,7 @@
         background-position: center;
         height: 100%;
         width: 100%;
-        background-size: 250px auto;
+        background-size: 180px auto;
         background-repeat: no-repeat;
         cursor: pointer;
       }
@@ -53,9 +53,11 @@
       .support {
         display: flex;
         align-items: center;
+        cursor: pointer;
+        margin-right: 10px;
 
         .fa-question-circle {
-          margin-right: 5px;
+          margin-right: 10px;
         }
       }
 
@@ -64,15 +66,30 @@
         margin-left: 10px;
         cursor: pointer;
       }
+
+      .language-vi {
+        &.active {
+          font-weight: bold;
+          text-decoration: underline;
+        }
+      }
+      .language-en {
+        &.active {
+          font-weight: bold;
+          text-decoration: underline;
+        }
+      }
     }
   }
 }
 
 .home-header-banner {
-  background: url("../../assets/header-background.jpg");
+  background-image: url("../../assets/header-background.jpg"),
+    linear-gradient(rgba(126, 126, 126, 0.25), rgba(255, 255, 255, 0.1));
+
   background-size: cover;
   background-position: center;
-  height: 600px;
+  height: 450px;
   background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
@@ -126,6 +143,13 @@
 
   .content-down {
     height: 50%;
+    //align-items: flex-end;
+    //display: flex;
+    //justify-content: center;
+    background-image: linear-gradient(
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.9)
+    );
 
     .options {
       display: flex;
