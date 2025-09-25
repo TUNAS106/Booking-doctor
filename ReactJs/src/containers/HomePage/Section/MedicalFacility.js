@@ -6,26 +6,26 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import specialtyImg from "../../../assets/specialty/co-xuong-khop.jpg";
-import "../HomePage.scss"; // dùng chung scss tối ưu
+import facilityImg from "../../../assets/specialty/co-xuong-khop.jpg";
+import "../HomePage.scss"; // dùng chung file scss
 
-class Specialty extends Component {
+class MedicalFacility extends Component {
     render() {
-        const specialties = [
-            { id: 1, name: "Cơ xương khớp 1", img: specialtyImg },
-            { id: 2, name: "Bệnh viện Chợ Rẫy 2", img: specialtyImg },
-            { id: 3, name: "Bệnh viện Chợ Rẫy 3", img: specialtyImg },
-            { id: 4, name: "Bệnh viện Chợ Rẫy 4", img: specialtyImg },
-            { id: 5, name: "Bệnh viện Chợ Rẫy 5", img: specialtyImg },
-            { id: 6, name: "Bệnh viện FV", img: specialtyImg },
+        const facilities = [
+            { id: 1, name: "Bệnh viện Hữu nghị Việt Đức", img: facilityImg },
+            { id: 2, name: "Bệnh viện Bạch Mai", img: facilityImg },
+            { id: 3, name: "Bệnh viện Chợ Rẫy", img: facilityImg },
+            { id: 4, name: "Bệnh viện Trung ương Huế", img: facilityImg },
+            { id: 5, name: "Phòng khám Đa khoa Quốc tế", img: facilityImg },
+            { id: 6, name: "Bệnh viện FV", img: facilityImg },
         ];
 
         return (
-            <div className="section-share section-specialty">
+            <div className="section-share section-medical-facility">
                 <div className="section-container">
                     <div className="section-header">
                         <span className="title-section">
-                            <FormattedMessage id="homepage.specialty-popular" />
+                            <FormattedMessage id="homepage.outstanding-medical-facility" />
                         </span>
                         <button className="btn-section">
                             <FormattedMessage id="homepage.more-info" />
@@ -34,7 +34,7 @@ class Specialty extends Component {
 
                     <div className="section-body">
                         <Slider {...this.props.settings}>
-                            {specialties.map((item) => (
+                            {facilities.map((item) => (
                                 <div className="section-item" key={item.id}>
                                     <img
                                         src={item.img}
@@ -59,4 +59,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps)(Specialty);
+export default connect(mapStateToProps)(MedicalFacility);
