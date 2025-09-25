@@ -3,9 +3,14 @@ import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './HomeHeader.scss';
 import { FormattedMessage } from 'react-intl';
+import { LANGUAGES } from '../../utils/constant';
+
+import { changeLanguageApp } from '../../store/actions/appActions';
 
 class HomeHeader extends Component {
-
+    changeLanguage = (language) => {
+        this.props.changeLanguageAppRedux(language)
+    }
     render() {
 
         return (
@@ -39,8 +44,12 @@ class HomeHeader extends Component {
                                 <i className="fas fa-question-circle"></i>
                                 <span><FormattedMessage id="home-header.support" /></span>
                             </div>
-                            <div className='language-vi'>VN</div>
-                            <div className='language-en'>EN</div>
+                            <div className={`language-vi ${this.props.language === LANGUAGES.VI ? 'active' : ''}`}>
+                                <span onClick={() => this.props.changeLanguageAppRedux(LANGUAGES.VI)}>VN</span>
+                            </div>
+                            <div className={`language-en ${this.props.language === LANGUAGES.EN ? 'active' : ''}`}>
+                                <span onClick={() => this.props.changeLanguageAppRedux(LANGUAGES.EN)}>EN</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -98,6 +107,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
+        changeLanguageAppRedux: (language) => dispatch(changeLanguageApp(language))
     };
 };
 
