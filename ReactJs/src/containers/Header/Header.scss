@@ -20,7 +20,11 @@
   .language {
     display: flex;
     align-items: center;
-
+    .welcome {
+      color: #fff;
+      font-size: $base-size;
+      margin-right: 10px;
+    }
     span {
       cursor: pointer;
       padding: 0 8px;
