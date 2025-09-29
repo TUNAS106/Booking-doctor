@@ -1,0 +1,36 @@
+.preview-img-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px; // khoảng cách giữa nút upload và ảnh
+
+  .btn-upload {
+    background-color: #0d6efd;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+  }
+
+  .btn-upload:hover {
+    background-color: #0b5ed7;
+  }
+
+  .preview-image {
+    width: 80px; // vừa đủ để xem ảnh thumbnail
+    height: 80px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: center center / cover no-repeat;
+    background-size: cover; // ảnh lấp đầy khung
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+
+  .preview-image:hover {
+    transform: scale(1.05);
+    border-color: #0d6efd;
+  }
+}

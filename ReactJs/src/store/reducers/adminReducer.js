@@ -1,33 +1,67 @@
-import actionTypes from '../actions/actionTypes';
-
+import actionTypes from '../actions/actionTypes'; // Đảm bảo đúng tên thư mục
+import appReducer from './appReducer';
 const initialState = {
-    isLoggedIn: false,
-    adminInfo: null
+    isLoadingGender: false,
+    genders: [],
+    roles: [],
+    positions: []
 }
 
-const appReducer = (state = initialState, action) => {
+const adminReducer = (state = initialState, action) => {
     switch (action.type) {
-        case actionTypes.ADMIN_LOGIN_SUCCESS:
+        case actionTypes.FETCH_GENDER_SUCCESS:
+            let copyState = { ...state };
+            copyState.genders = action.data;
+            //console.log('Reducer FETCH_GENDER_SUCCESS');
             return {
-                ...state,
-                isLoggedIn: true,
-                adminInfo: action.adminInfo
+                ...copyState,
             }
-        case actionTypes.ADMIN_LOGIN_FAIL:
+        case actionTypes.FETCH_GENDER_FAIL:
+            let copyState2 = { ...state };
+            copyState2.isLoadingGender = false;
+            //console.log('Reducer FETCH_GENDER_FAIL');
             return {
-                ...state,
-                isLoggedIn: false,
-                adminInfo: null
+                ...copyState2,
             }
-        case actionTypes.PROCESS_LOGOUT:
+        case actionTypes.FETCH_GENDER_START:
+            let copyState1 = { ...state };
+            copyState1.isLoadingGender = true;
+            //console.log('Reducer FETCH_GENDER_START');
             return {
-                ...state,
-                isLoggedIn: false,
-                adminInfo: null
+                ...copyState1,
             }
+
+        case actionTypes.FETCH_POSITION_SUCCESS:
+            let copyState3 = { ...state };
+            copyState3.positions = action.data;
+            return {
+                ...copyState3,
+            }
+
+        case actionTypes.FETCH_POSITION_FAIL:
+            let copyState4 = { ...state };
+            copyState4.positions = [];
+            return {
+                ...copyState4,
+            }
+
+        case actionTypes.FETCH_ROLE_SUCCESS:
+            let copyState5 = { ...state };
+            copyState5.roles = action.data;
+            return {
+                ...copyState5,
+            }
+
+        case actionTypes.FETCH_ROLE_FAIL:
+            let copyState6 = { ...state };
+            copyState6.roles = [];
+            return {
+                ...copyState6,
+            }
+
         default:
             return state;
     }
 }
 
-export default appReducer;
+export default adminReducer;

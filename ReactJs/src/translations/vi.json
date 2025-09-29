@@ -37,6 +37,26 @@
             "handbook": "Cẩm nang"
 
         }
+    },
+
+    "manage-user": {
+        "title": "Quản lý người dùng",
+        "add": "Thêm",
+        "edit": "Sửa",
+        "delete": "Xóa",
+        "id": "Mã",
+        "email": "Email",
+        "password": "Mật khẩu",
+        "first-name": "Tên",
+        "last-name": "Họ",
+        "address": "Địa chỉ",
+        "phone-number": "Số điện thoại",
+        "gender": "Giới tính",
+        "role": "Vai trò",
+        "position": "Chức danh",
+        "image": "Hình ảnh",
+        "save": "Lưu",
+        "cancel": "Hủy"
     }
-    
+
 }
