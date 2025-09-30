@@ -108,12 +108,14 @@ let createNewUser = (data) => {
                 lastName: data.lastName,
                 address: data.address,
                 phoneNumber: data.phoneNumber,
-                gender: data.gender === '1' ? true : false,
-                roleId: data.roleId,
+                gender: data.gender,
+                roleId: data.role,
+                positionId: data.position,
+                //image: data.avatar
             });
             resolve({
                 errCode: 0,
-                message: 'OK'
+                message: 'Ok'
             });
         } catch (e) {
             reject(e);
@@ -172,9 +174,10 @@ let updateUserData = (data) => {
                     firstName: data.firstName,
                     lastName: data.lastName,
                     address: data.address,
-                    //phoneNumber: data.phoneNumber,
-                    //gender: data.gender === '1' ? true : false,
-                    //roleId: data.roleId,
+                    roleId: data.role,
+                    positionId: data.position,
+                    gender: data.gender,
+                    phoneNumber: data.phoneNumber,
                 }, {
                     where: { id: data.id }
                 });
