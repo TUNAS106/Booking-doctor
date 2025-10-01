@@ -7,6 +7,7 @@ import './UserRedux.scss';
 import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css';
 import TableManageUser from './TableManageUser';
+import { CommonUtils } from '../../../utils';
 
 class UserRedux extends Component {
 
@@ -69,24 +70,27 @@ class UserRedux extends Component {
                 lastName: '',
                 phoneNumber: '',
                 address: '',
-                gender: '',
-                position: '',
-                role: '',
+                gender: this.props.genderRedux?.[0]?.key || '',
+                position: this.props.positionRedux?.[0]?.key || '',
+                role: this.props.roleRedux?.[0]?.key || '',
                 avatar: '',
-
+                previewImgURL: '',
                 action: CRUD_Actions.CREATE,
             });
         }
     }
 
-    handleImageChange = (event) => {
+    handleImageChange = async (event) => {
         let data = event.target.files;
         let file = data[0];
-        let ObjectURL = URL.createObjectURL(file);
+
         if (file) {
+            let base64 = await CommonUtils.getBase64(file);
+            let ObjectURL = URL.createObjectURL(file);
+
             this.setState({
                 previewImgURL: ObjectURL,
-                avatar: file
+                avatar: base64
             });
         }
     }
@@ -113,6 +117,10 @@ class UserRedux extends Component {
     }
 
     handleEditUserFromParent = (user) => {
+        let imageBase64 = '';
+        if (user.image) {
+            imageBase64 = Buffer.from(user.image, 'base64').toString('binary');
+        }
         this.setState({
             email: user.email,
             password: 'HARDCODE',
@@ -123,10 +131,12 @@ class UserRedux extends Component {
             gender: user.gender,
             position: user.position,
             role: user.role,
-            avatar: user.avatar,
+            avatar: imageBase64,
+            previewImgURL: imageBase64,
 
             action: CRUD_Actions.EDIT,
             userId: user.id
+
         });
     }
 
@@ -147,7 +157,7 @@ class UserRedux extends Component {
                 positionId: this.state.position,
                 gender: this.state.gender,
                 phoneNumber: this.state.phoneNumber,
-                // avatar: this.state.avatar
+                avatar: this.state.avatar
             });
             setTimeout(() => {
                 this.props.fetchAllUsersRedux();
@@ -172,6 +182,8 @@ class UserRedux extends Component {
                 this.props.fetchAllUsersRedux();
             }, 1000);
         }
+        // Reset preview image after save or edit
+        this.setState({ previewImgURL: '' });
     }
 
     render() {

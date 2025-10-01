@@ -111,7 +111,7 @@ let createNewUser = (data) => {
                 gender: data.gender,
                 roleId: data.role,
                 positionId: data.position,
-                //image: data.avatar
+                image: data.avatar
             });
             resolve({
                 errCode: 0,
@@ -178,6 +178,7 @@ let updateUserData = (data) => {
                     positionId: data.position,
                     gender: data.gender,
                     phoneNumber: data.phoneNumber,
+                    image: data.avatar
                 }, {
                     where: { id: data.id }
                 });
