@@ -21,6 +21,14 @@
         "child5": "Nha khoa",
         "child6": "Khám bảo hiểm"
     },
+
+    "homepage": {
+        "outstanding-doctor": "Bác sĩ nổi bật",
+        "specialty-popular": "Chuyên khoa phổ biến",
+        "outstanding-medical-facility": "Cơ sở y tế nổi bật",
+        "handbook": "Cẩm nang sức khỏe",
+        "more-info": "Xem thêm"
+    },
     "menu": {
 
         "admin": {

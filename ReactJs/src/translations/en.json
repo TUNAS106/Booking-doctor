@@ -21,6 +21,14 @@
         "child5": "Dental",
         "child6": "Insurance examination"
     },
+
+    "homepage": {
+        "outstanding-doctor": "Outstanding doctor",
+        "specialty-popular": "Popular specialty",
+        "outstanding-medical-facility": "Outstanding medical facility",
+        "handbook": "Handbook",
+        "more-info": "More info"
+    },
     "menu": {
         "admin": {
             "manage-user": "User",

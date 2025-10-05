@@ -108,7 +108,7 @@ let createNewUser = (data) => {
                 lastName: data.lastName,
                 address: data.address,
                 phoneNumber: data.phoneNumber,
-                gender: data.gender,
+                genderId: data.gender,
                 roleId: data.role,
                 positionId: data.position,
                 image: data.avatar
@@ -176,7 +176,7 @@ let updateUserData = (data) => {
                     address: data.address,
                     roleId: data.role,
                     positionId: data.position,
-                    gender: data.gender,
+                    genderId: data.gender,
                     phoneNumber: data.phoneNumber,
                     image: data.avatar
                 }, {

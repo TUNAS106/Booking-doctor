@@ -110,16 +110,17 @@
 }
 
 .section-outstanding-doctor {
-  .doctor-card {
+  .section-item {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 10px;
 
-    .img-section {
+    .img-section-doctor {
       width: 120px;
       height: 120px;
-      border-radius: 50%; // hình tròn avatar
       object-fit: cover;
+      border-radius: 50%; // hình tròn avatar
       border: 2px solid #eee;
       margin: 0 auto 10px auto;
       transition: transform 0.3s ease;
@@ -131,6 +132,7 @@
 
     .text-section {
       text-align: center;
+      margin-top: 10px;
 
       .doctor-name {
         font-size: 16px;
@@ -141,6 +143,12 @@
       .doctor-specialty {
         font-size: 14px;
         color: #777;
+      }
+
+      .doctor-position {
+        font-size: 13px;
+        color: #888;
+        margin-top: 2px;
       }
     }
   }

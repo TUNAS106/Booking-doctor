@@ -25,10 +25,10 @@ class HandBook extends Component {
                 <div className="section-container">
                     <div className="section-header">
                         <span className="title-section">
-                            <FormattedMessage id="homepage.handbook" defaultMessage="Cẩm nang sức khỏe" />
+                            <FormattedMessage id="homepage.handbook" />
                         </span>
                         <button className="btn-section">
-                            <FormattedMessage id="homepage.more-info" defaultMessage="Xem thêm" />
+                            <FormattedMessage id="homepage.more-info" />
                         </button>
                     </div>
 

@@ -1,6 +1,6 @@
 import actionTypes from './actionTypes';
 import { getAllCodeService } from '../../services/userService';
-import { createNewUserToApi, getAllUsers, deleteUserFromApi, editUserFromApi } from '../../services/userService';
+import { createNewUserToApi, getAllUsers, deleteUserFromApi, editUserFromApi, getTopDoctorHomeFromApi } from '../../services/userService';
 import { toast } from 'react-toastify';
 
 export const fetchGenderStart = () => {
@@ -106,7 +106,7 @@ export const fetchAllUsersStart = () => {
     return async (dispatch, getState) => {
         try {
             let res = await getAllUsers("ALL");
-            //console.log('check res fetch all users222222', res);
+
             if (res && res.errCode === 0) {
                 dispatch(fetchAllUsersSuccess(res.users));
             } else {
@@ -175,3 +175,30 @@ export const editUserSuccess = () => ({
 export const editUserFail = () => ({
     type: actionTypes.EDIT_USER_FAIL,
 })
+
+
+
+export const fetchTopDoctorHomeSuccess = (data) => ({
+    type: actionTypes.FETCH_TOP_DOCTOR_HOME_SUCCESS,
+    data: data
+})
+
+export const fetchTopDoctorHomeFail = () => ({
+    type: actionTypes.FETCH_TOP_DOCTOR_HOME_FAIL
+})
+
+export const fetchTopDoctorHome = () => {
+    return async (dispatch, getState) => {
+        try {
+            let res = await getTopDoctorHomeFromApi(8);
+            console.log('check res#', res);
+            if (res && res.errCode === 0) {
+                dispatch(fetchTopDoctorHomeSuccess(res.data));
+            } else {
+                dispatch(fetchTopDoctorHomeFail());
+            }
+        } catch (e) {
+            console.log('fetchTopDoctorHome error', e);
+        }
+    };
+}
