@@ -1,6 +1,6 @@
 import actionTypes from './actionTypes';
 import { getAllCodeService } from '../../services/userService';
-import { createNewUserToApi, getAllUsers, deleteUserFromApi, editUserFromApi, getTopDoctorHomeFromApi } from '../../services/userService';
+import { createNewUserToApi, getAllUsers, deleteUserFromApi, editUserFromApi, getTopDoctorHomeFromApi, getAllDoctorsFromApi, saveDetailInforDoctorFromApi } from '../../services/userService';
 import { toast } from 'react-toastify';
 
 export const fetchGenderStart = () => {
@@ -199,6 +199,55 @@ export const fetchTopDoctorHome = () => {
             }
         } catch (e) {
             console.log('fetchTopDoctorHome error', e);
+        }
+    };
+}
+
+export const fetchAllDoctorsSuccess = (data) => ({
+    type: actionTypes.FETCH_ALL_DOCTORS_SUCCESS,
+    data: data
+})
+
+export const fetchAllDoctorsFail = () => ({
+    type: actionTypes.FETCH_ALL_DOCTORS_FAIL
+})
+
+export const fetchAllDoctors = () => {
+    return async (dispatch, getState) => {
+        try {
+            let res = await getAllDoctorsFromApi();
+            if (res && res.errCode === 0) {
+                dispatch(fetchAllDoctorsSuccess(res.data));
+            } else {
+                dispatch(fetchAllDoctorsFail());
+            }
+        } catch (e) {
+            console.log('fetchAllDoctors error', e);
+        }
+    };
+}
+
+export const saveDetailDoctorSuccess = () => ({
+    type: actionTypes.SAVE_DETAIL_DOCTOR_SUCCESS,
+})
+
+export const saveDetailDoctorFail = () => ({
+    type: actionTypes.SAVE_DETAIL_DOCTOR_FAIL,
+})
+
+export const saveDetailDoctor = (data) => {
+    return async (dispatch, getState) => {
+        try {
+            let res = await saveDetailInforDoctorFromApi(data);
+            if (res && res.errCode === 0) {
+                toast.success('Save infor detail doctor success!');
+                dispatch(saveDetailDoctorSuccess());
+            } else {
+                toast.error('Save infor detail doctor error!');
+                dispatch(saveDetailDoctorFail());
+            }
+        } catch (e) {
+            console.log('saveDetailDoctor error', e);
         }
     };
 }

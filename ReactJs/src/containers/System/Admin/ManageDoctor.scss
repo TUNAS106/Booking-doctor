@@ -1,0 +1,29 @@
+.manage-doctor-container {
+  padding: 15px;
+  background-color: #fff;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  margin-top: 15px;
+  text-align: center;
+
+  .more-info {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+
+    .content-left {
+      width: 35%;
+
+      label {
+        font-weight: bold;
+      }
+    }
+    .content-right {
+      width: 60%;
+
+      label {
+        font-weight: bold;
+      }
+    }
+  }
+}
