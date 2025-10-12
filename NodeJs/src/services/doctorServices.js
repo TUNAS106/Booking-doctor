@@ -68,6 +68,47 @@ let saveDetailInforDoctor = (inputData) => {
     });
 }
 
+let getDetailDoctorById = (id) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            if (!id) {
+                resolve({
+                    errCode: 1,
+                    errMessage: "Missing parameter"
+                });
+            } else {
+                let doctor = await db.User.findOne({
+                    where: { id: id, roleId: 'R2' },
+                    attributes: { exclude: ["password"] },
+                    include: [
+                        {
+                            model: db.Markdown, as: "markdownData", attributes: ["description", "contentHTML", "contentMarkdown"]
+                        },
+                        { model: db.Allcode, as: "positionData", attributes: ["valueEn", "valueVi"] },
+                    ],
+                    raw: false,
+                    nest: true,
+                });
+                if (doctor) {
+                    if (doctor.image) {
+                        doctor.image = new Buffer(doctor.image, 'base64').toString('binary');
+                    }
+                    resolve({
+                        errCode: 0,
+                        data: doctor
+                    });
+                } else {
+                    resolve({
+                        errCode: 2,
+                        errMessage: "Doctor not found"
+                    });
+                }
+            }
+        } catch (e) {
+            reject(e);
+        }
+    });
+}
 export default {
-    getTopDoctorHome, getAllDoctors, saveDetailInforDoctor
+    getTopDoctorHome, getAllDoctors, saveDetailInforDoctor, getDetailDoctorById
 }

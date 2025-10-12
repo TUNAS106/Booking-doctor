@@ -10,15 +10,16 @@ import { LANGUAGES } from '../../../utils';
 import doctorImg from "../../../assets/specialty/co-xuong-khop.jpg"; // bạn thay ảnh thật vào
 import "../HomePage.scss";
 import * as actions from "../../../store/actions";
+import { withRouter } from 'react-router';
 
 class OutstandingDoctor extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
             arrDoctors: []
         }
     }
+
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (prevProps.topDoctors !== this.props.topDoctors) {
             this.setState({
@@ -30,6 +31,11 @@ class OutstandingDoctor extends Component {
     componentDidMount() {
         this.props.loadTopDoctors();
     }
+
+    handleViewDetailDoctor = (doctor) => {
+        this.props.history.push(`/doctor/${doctor.id}`);
+    }
+
     render() {
         let { arrDoctors } = this.state;
         console.log('arrDoctors', arrDoctors);
@@ -54,7 +60,9 @@ class OutstandingDoctor extends Component {
                                         imageBase64 = new Buffer(item.image, 'base64').toString('binary');
                                     }
                                     return (
-                                        <div className="section-item" key={item.id}>
+                                        <div className="section-item" key={item.id}
+                                            onClick={() => this.handleViewDetailDoctor(item)}
+                                        >
                                             <img
                                                 src={imageBase64}
                                                 alt={item.firstName + ' ' + item.lastName}
@@ -94,4 +102,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(OutstandingDoctor);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(OutstandingDoctor));

@@ -1,0 +1,138 @@
+.detail-doctor-container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f9f9f9;
+  font-family: "Inter", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 0;
+
+  .intro-doctor {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+    width: 80%;
+    max-width: 1200px;
+    background: #fff;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+
+    .content-left {
+      flex: 0 0 220px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .image-doctor {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid #eee;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      }
+    }
+
+    .content-right {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      .up {
+        font-size: 22px;
+        font-weight: 600;
+        color: #2c3e50;
+        margin-bottom: 12px;
+      }
+
+      .down {
+        font-size: 16px;
+        color: #555;
+        line-height: 1.6;
+        white-space: pre-line;
+      }
+    }
+  }
+
+  .schedule-doctor {
+    width: 80%;
+    max-width: 1200px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+    padding: 25px;
+  }
+
+  .detail-infor-doctor {
+    width: 80%;
+    max-width: 1200px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+    padding: 25px;
+
+    h2 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: #2d3436;
+    }
+
+    p {
+      font-size: 16px;
+      color: #555;
+      line-height: 1.6;
+    }
+  }
+
+  .comment-doctor,
+  .like-doctor {
+    width: 80%;
+    max-width: 1200px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+    padding: 25px;
+  }
+
+  /* Responsive */
+  @media (max-width: 992px) {
+    .intro-doctor {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+
+      .content-left {
+        margin-bottom: 20px;
+      }
+
+      .content-right {
+        .up {
+          font-size: 20px;
+        }
+        .down {
+          font-size: 15px;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 576px) {
+    .intro-doctor {
+      padding: 20px;
+      gap: 20px;
+    }
+  }
+}
