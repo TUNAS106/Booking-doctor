@@ -44,6 +44,11 @@
             "manage-handbook": "Quản lý cẩm nang",
             "handbook": "Cẩm nang"
 
+        },
+
+        "doctor": {
+            "manage-schedule": "Quản lý lịch khám",
+            "schedule": "Lịch khám"
         }
     },
 
