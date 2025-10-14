@@ -29,6 +29,13 @@ class Login extends Component {
         });
     };
 
+    // ✅ Khi nhấn Enter thì gọi hàm đăng nhập
+    handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            this.handleLogin();
+        }
+    };
+
     handleLogin = async () => {
         this.setState({ errMessage: '' });
         try {
@@ -39,17 +46,13 @@ class Login extends Component {
                 });
             }
             if (data && data.errCode === 0) {
-                //console.log('Dispatching userLoginSuccess with:', data.user);
                 this.props.userLoginSuccess(data.user);
-                //console.log('Login successful');
             }
         } catch (error) {
-            if (error.response) {
-                if (error.response.data) {
-                    this.setState({
-                        errMessage: error.response.data.message
-                    });
-                }
+            if (error.response && error.response.data) {
+                this.setState({
+                    errMessage: error.response.data.message
+                });
             }
         }
     };
@@ -69,6 +72,7 @@ class Login extends Component {
                             Log in
                         </div>
 
+                        {/* Username */}
                         <div className="col-12 form-group login-input">
                             <label>Username:</label>
                             <input
@@ -76,10 +80,12 @@ class Login extends Component {
                                 className="form-control"
                                 placeholder="Enter your username"
                                 value={this.state.username}
-                                onChange={(event) => this.handleInputChange(event, 'username')}
+                                onChange={this.handleInputChange}
+                                onKeyDown={this.handleKeyDown}
                             />
                         </div>
 
+                        {/* Password */}
                         <div className="col-12 form-group login-input">
                             <label>Password:</label>
                             <div className="custom-input-password">
@@ -88,16 +94,21 @@ class Login extends Component {
                                     className="form-control"
                                     placeholder="Enter your password"
                                     value={this.state.password}
-                                    onChange={(event) => this.handleInputChangePassword(event, 'password')}
+                                    onChange={this.handleInputChangePassword}
+                                    onKeyDown={this.handleKeyDown}
                                 />
                                 <span onClick={this.handleShowHidePassword}>
                                     <i className={this.state.isShowPassword ? "fas fa-eye" : "fas fa-eye-slash"}></i>
                                 </span>
                             </div>
                         </div>
+
+                        {/* Hiển thị lỗi */}
                         <div className="col-12" style={{ color: 'red' }}>
                             {this.state.errMessage}
                         </div>
+
+                        {/* Nút login */}
                         <div className="col-12">
                             <button
                                 className="btn-login"
@@ -139,7 +150,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         navigate: (path) => dispatch(push(path)),
-        // userLoginFail: () => dispatch(actions.userLoginFail()),
         userLoginSuccess: (userInfo) => dispatch(actions.userLoginSuccess(userInfo)),
     };
 };

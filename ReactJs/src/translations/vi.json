@@ -70,6 +70,16 @@
         "image": "Hình ảnh",
         "save": "Lưu",
         "cancel": "Hủy"
+    },
+
+    "manage-schedule": {
+        "title": "Quản lý lịch khám",
+        "description": "Tạo lịch khám cho bác sĩ",
+        "select-doctor": "Chọn bác sĩ",
+        "select-date": "Chọn ngày",
+        "select-time": "Chọn thời gian",
+        "save": "Lưu thông tin",
+        "note": "Lưu ý: Thời gian đã chọn sẽ được hiển thị trên cổng thông tin bệnh nhân"
     }
 
 }

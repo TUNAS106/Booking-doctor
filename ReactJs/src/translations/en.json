@@ -69,5 +69,15 @@
         "image": "Image",
         "save": "Save",
         "cancel": "Cancel"
+    },
+
+    "manage-schedule": {
+        "title": "Manage Schedule",
+        "description": "Create schedule for doctor",
+        "select-doctor": "Select doctor",
+        "select-date": "Select date",
+        "select-time": "Select time",
+        "save": "Save info",
+        "note": "Note: Selected time will be displayed on patient portal"
     }
 }
