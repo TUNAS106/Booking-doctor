@@ -79,5 +79,17 @@
         "select-time": "Select time",
         "save": "Save info",
         "note": "Note: Selected time will be displayed on patient portal"
+    },
+
+    "patient": {
+        "detail-doctor": {
+            "select-day": "Select examination day",
+            "available": "Available examination slots",
+            "profile": "Doctor profile",
+            "schedule": "Examination schedule",
+            "detail-info": "Detailed information",
+            "comments": "Reviews",
+            "book-appointment": "Book an appointment"
+        }
     }
 }

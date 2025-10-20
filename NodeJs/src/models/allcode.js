@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
         static associate(models) {
             Allcode.hasMany(models.User, { foreignKey: 'positionId', targetKey: 'keyMap', as: 'positionData' });
             Allcode.hasMany(models.User, { foreignKey: 'genderId', targetKey: 'keyMap', as: 'genderData' });
+            Allcode.hasMany(models.Schedule, { foreignKey: 'timeType', targetKey: 'keyMap', as: 'timeTypeData' });
         }
     };
     Allcode.init({

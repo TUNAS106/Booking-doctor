@@ -113,7 +113,7 @@ class ManageSchedule extends Component {
             selectedTime.forEach(item => {
                 let obj = {
                     doctorId: selectedDoctor.value,
-                    date: formattedDate, // ✅ Dùng định dạng DD/MM/YYYY
+                    date: '' + formattedDate,
                     timeType: item.keyMap
                 };
                 result.push(obj);

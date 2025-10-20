@@ -114,31 +114,28 @@ let bulkCreateSchedule = (data) => {
                     errMessage: "Missing parameter"
                 });
             }
+
             console.log('data', data);
+
+            // Không convert date nữa, giữ nguyên
             let schedule = data.arrSchedule.map(item => ({
                 ...item,
-                date: new Date(item.date).setHours(0, 0, 0, 0),
                 maxNumber: +process.env.MAX_NUMBER_SCHEDULE,
             }));
 
+            // Tìm các schedule đã tồn tại
             let existing = await db.Schedule.findAll({
-                where: { doctorId: data.doctorId, date: new Date(data.formattedDate) },
+                where: { doctorId: data.doctorId, date: data.formattedDate },
                 attributes: ['timeType', 'date', 'doctorId', 'maxNumber'],
                 raw: true,
             });
 
-            existing = existing.map(item => ({
-                ...item,
-                date: new Date(item.date).setHours(0, 0, 0, 0),
-            }));
-
+            // So sánh trực tiếp, không convert date
             let toCreate = _.differenceWith(schedule, existing, (a, b) =>
-                a.timeType === b.timeType &&
-                new Date(a.date).setHours(0, 0, 0, 0) === new Date(b.date).setHours(0, 0, 0, 0)
+                a.timeType === b.timeType && a.date === b.date
             );
-            console.log('existing2', existing);
-            console.log('schedule', schedule);
-            console.log('toCreate', toCreate);
+
+
 
             if (toCreate && toCreate.length > 0) {
                 await db.Schedule.bulkCreate(toCreate);
@@ -152,10 +149,46 @@ let bulkCreateSchedule = (data) => {
     });
 };
 
+
+let getScheduleByDate = (doctorId, date) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            if (!doctorId || !date) {
+                return resolve({
+                    errCode: 1,
+                    errMessage: "Missing parameter"
+                });
+            }
+
+            let schedule = await db.Schedule.findAll({
+                where: { doctorId: doctorId, date: date },
+                include: [
+                    {
+                        model: db.Allcode,
+                        as: 'timeTypeData',
+                        attributes: ['valueEn', 'valueVi']
+                    }
+                ],
+                raw: false,
+                nest: true
+            });
+
+            resolve({
+                errCode: 0,
+                data: schedule
+            });
+
+        } catch (e) {
+            reject(e);
+        }
+    });
+};
+
 export default {
     getTopDoctorHome,
     getAllDoctors,
     saveDetailInforDoctor,
     getDetailDoctorById,
     bulkCreateSchedule,
+    getScheduleByDate
 };

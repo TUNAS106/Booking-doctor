@@ -1,0 +1,156 @@
+.doctor-schedule-container {
+  background-color: #f9fbfd;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  max-width: 650px;
+  margin: 20px auto;
+  transition: all 0.3s ease;
+
+  .all-schedule {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    .text-calendar {
+      display: flex;
+      align-items: center;
+      font-size: 20px;
+      font-weight: 600;
+      color: #003366;
+      margin-bottom: 8px;
+
+      i {
+        color: #007bff;
+        margin-right: 10px;
+        font-size: 22px;
+      }
+
+      span {
+        letter-spacing: 0.5px;
+      }
+    }
+
+    select {
+      padding: 10px 14px;
+      border: 1px solid #dbe3eb;
+      border-radius: 10px;
+      font-size: 16px;
+      outline: none;
+      background-color: white;
+      color: #003366;
+      transition: all 0.2s ease;
+
+      &:hover {
+        border-color: #007bff;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+      }
+
+      &:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+      }
+    }
+
+    .all-available-time {
+      background: #ffffff;
+      padding: 20px 25px;
+      border-radius: 14px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+
+      .text-available-time {
+        display: flex;
+        align-items: center;
+        font-size: 18px;
+        font-weight: 600;
+        color: #004080;
+        margin-bottom: 15px;
+
+        i {
+          color: #00aaff;
+          margin-right: 10px;
+          font-size: 20px;
+        }
+
+        span {
+          letter-spacing: 0.4px;
+        }
+      }
+
+      .time-content {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+
+        .btn-time {
+          width: 160px; // 🔹 cố định chiều rộng cho tất cả các ô
+          height: 48px; // 🔹 chiều cao đồng nhất
+          background-color: #e6f0ff;
+          border: 1px solid #cce0ff;
+          color: #004080;
+          font-size: 15px;
+          border-radius: 8px;
+          cursor: pointer;
+          transition: all 0.25s ease;
+          font-weight: 500;
+          text-align: center;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          white-space: nowrap; // 🔹 không cho xuống dòng
+          overflow: hidden;
+          text-overflow: ellipsis; // 🔹 nếu text quá dài thì thêm “...”
+
+          &:hover {
+            background-color: #007bff;
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 3px 8px rgba(0, 123, 255, 0.25);
+          }
+
+          &:active {
+            transform: scale(0.96);
+            background-color: #0069d9;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .btn-time {
+            width: 140px; // 🔹 nhỏ hơn trên mobile
+            height: 45px;
+            font-size: 14px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .btn-time {
+            width: 120px;
+            height: 42px;
+            font-size: 13px;
+          }
+        }
+      }
+    }
+  }
+
+  // Hiệu ứng hover tổng thể (đặt chuột vào khung)
+  &:hover {
+    box-shadow: 0 6px 20px rgba(0, 123, 255, 0.1);
+    transform: translateY(-3px);
+  }
+
+  // Responsive
+  @media (max-width: 768px) {
+    padding: 20px;
+    max-width: 95%;
+
+    .all-available-time .time-content {
+      justify-content: center;
+    }
+
+    select {
+      font-size: 14px;
+    }
+  }
+}

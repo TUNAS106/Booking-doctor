@@ -80,6 +80,18 @@
         "select-time": "Chọn thời gian",
         "save": "Lưu thông tin",
         "note": "Lưu ý: Thời gian đã chọn sẽ được hiển thị trên cổng thông tin bệnh nhân"
+    },
+
+    "patient": {
+        "detail-doctor": {
+            "select-day": "Chọn ngày khám",
+            "available": "Khung giờ khám",
+            "profile": "Hồ sơ bác sĩ",
+            "schedule": "Lịch khám",
+            "detail-info": "Thông tin chi tiết",
+            "comments": "Đánh giá",
+            "book-appointment": "Đặt lịch khám"
+        }
     }
 
 }

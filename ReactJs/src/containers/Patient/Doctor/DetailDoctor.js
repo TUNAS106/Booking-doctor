@@ -5,6 +5,8 @@ import HomeHeader from '../../HomePage/HomeHeader';
 import './DetailDoctor.scss';
 import { path } from '../../../utils';
 import { getDetailDoctorByIdFromApi } from '../../../services/userService';
+import DoctorSchedule from './DoctorSchedule';
+
 
 class DetailDoctor extends Component {
     constructor(props) {
@@ -58,7 +60,16 @@ class DetailDoctor extends Component {
                             </div>
                         </div>
                     </div>
-                    <div className='schedule-doctor'></div>
+                    <div className='schedule-doctor'>
+                        <div className='content-left'>
+                            <DoctorSchedule
+                                doctorIdFromParent={this.state.doctorId}
+                            />
+                        </div>
+                        <div className='content-right'>
+                            <button className='btn-booking'>Đặt lịch khám</button>
+                        </div>
+                    </div>
                     <div className='detail-infor-doctor'>
                         {detailDoctor && Array.isArray(detailDoctor.markdownData) && detailDoctor.markdownData.length > 0 && detailDoctor.markdownData[detailDoctor.markdownData.length - 1].contentHTML &&
                             <div dangerouslySetInnerHTML={{ __html: detailDoctor.markdownData[detailDoctor.markdownData.length - 1].contentHTML }}>
