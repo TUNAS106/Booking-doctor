@@ -274,3 +274,74 @@ export const fetchAllScheduleTime = () => {
         }
     };
 }
+
+export const getDoctorPriceSuccess = (data) => ({
+    type: actionTypes.GET_PRICE_SUCCESS,
+    data: data
+})
+export const getDoctorPriceFail = () => ({
+    type: actionTypes.GET_PRICE_FAIL
+})
+export const getDoctorPriceStart = () => {
+    return async (dispatch, getState) => {
+        try {
+            let res = await getAllCodeService("PRICE");
+            if (res && res.errCode === 0) {
+                dispatch(getDoctorPriceSuccess(res.data));
+            } else {
+                dispatch(getDoctorPriceFail());
+            }
+        } catch (e) {
+            console.log('getDoctorPriceStart error', e);
+        }
+    };
+}
+
+export const getDoctorPaymentSuccess = (data) => ({
+    type: actionTypes.GET_PAYMENT_SUCCESS,
+    data: data
+})
+
+export const getDoctorPaymentFail = () => ({
+    type: actionTypes.GET_PAYMENT_FAIL
+})
+
+export const getDoctorPaymentStart = () => {
+    return async (dispatch, getState) => {
+        try {
+            let res = await getAllCodeService("PAYMENT");
+            if (res && res.errCode === 0) {
+                dispatch(getDoctorPaymentSuccess(res.data));
+            }
+            else {
+                dispatch(getDoctorPaymentFail());
+            }
+        } catch (e) {
+            console.log('getDoctorPaymentStart error', e);
+        }
+    };
+}
+
+export const getDoctorProvinceSuccess = (data) => ({
+    type: actionTypes.GET_PROVINCE_SUCCESS,
+    data: data
+})
+
+export const getDoctorProvinceFail = () => ({
+    type: actionTypes.GET_PROVINCE_FAIL
+})
+
+export const getDoctorProvinceStart = () => {
+    return async (dispatch, getState) => {
+        try {
+            let res = await getAllCodeService("PROVINCE");
+            if (res && res.errCode === 0) {
+                dispatch(getDoctorProvinceSuccess(res.data));
+            } else {
+                dispatch(getDoctorProvinceFail());
+            }
+        } catch (e) {
+            console.log('getDoctorProvinceStart error', e);
+        }
+    };
+}

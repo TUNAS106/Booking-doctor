@@ -108,6 +108,38 @@ const adminReducer = (state = initialState, action) => {
                 ...state,
                 allScheduleTime: []
             }
+
+        case actionTypes.GET_PRICE_SUCCESS:
+            return {
+                ...state,
+                allPrice: action.data
+            }
+        case actionTypes.GET_PRICE_FAIL:
+            return {
+                ...state,
+                allPrice: []
+            }
+        case actionTypes.GET_PAYMENT_SUCCESS:
+            return {
+                ...state,
+                allPayment: action.data
+            }
+        case actionTypes.GET_PAYMENT_FAIL:
+            return {
+                ...state,
+                allPayment: []
+            }
+        case actionTypes.GET_PROVINCE_SUCCESS:
+            return {
+                ...state,
+                allProvince: action.data
+            }
+        case actionTypes.GET_PROVINCE_FAIL:
+            return {
+                ...state,
+                allProvince: []
+            }
+
         default:
             return state;
     }

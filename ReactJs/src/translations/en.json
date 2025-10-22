@@ -91,5 +91,24 @@
             "comments": "Reviews",
             "book-appointment": "Book an appointment"
         }
+    },
+
+    "admin": {
+        "manage-doctor": {
+            "title": "Manage Doctor",
+            "select-doctor": "Select Doctor",
+            "intro-info": "Introduction Information",
+            "clinic-address": "Clinic Address",
+            "note": "Note",
+            "payment": "Payment",
+            "price": "Examination Price",
+            "province": "Province/City",
+            "specialty": "Specialty",
+            "clinic": "Clinic",
+            "name-clinic": "Clinic Name",
+            "address-clinic": "Clinic Address",
+            "save": "Save Information",
+            "update": "Update Information"
+        }
     }
 }

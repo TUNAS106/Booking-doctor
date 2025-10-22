@@ -92,6 +92,25 @@
             "comments": "Đánh giá",
             "book-appointment": "Đặt lịch khám"
         }
-    }
+    },
 
+    "admin": {
+        "manage-doctor": {
+            "title": "Quản lý bác sĩ",
+            "select-doctor": "Chọn bác sĩ",
+            "intro-info": "Thông tin giới thiệu",
+            "clinic-address": "Địa chỉ phòng khám",
+            "note": "Ghi chú",
+            "payment": "Thanh toán",
+            "price": "Giá khám",
+            "province": "Tỉnh/Thành phố",
+            "specialty": "Chuyên khoa",
+            "clinic": "Phòng khám",
+            "name-clinic": "Tên phòng khám",
+            "address-clinic": "Địa chỉ phòng khám",
+            
+            "save": "Lưu thông tin",
+            "update": "Cập nhật thông tin"
+        }
+    }
 }
