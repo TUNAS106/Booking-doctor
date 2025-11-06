@@ -1,0 +1,62 @@
+.profile-doctor-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+  .intro-doctor {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+
+    .content-left {
+      flex: 0 0 120px;
+
+      .image-doctor {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #eee;
+      }
+    }
+
+    .content-right {
+      flex: 1;
+
+      .up {
+        font-size: 18px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 5px;
+      }
+
+      .down {
+        font-size: 14px;
+        color: #666;
+        line-height: 1.5;
+      }
+    }
+  }
+
+  .content-bottom {
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+    text-align: right; // căn phải cho sang, đổi thành left nếu muốn căn trái
+
+    .price {
+      font-size: 16px;
+      font-weight: 600;
+      color: #2e7d32;
+
+      span {
+        color: #d32f2f;
+        margin-left: 5px;
+      }
+    }
+  }
+}

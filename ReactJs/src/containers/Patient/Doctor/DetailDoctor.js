@@ -6,6 +6,7 @@ import './DetailDoctor.scss';
 import { path } from '../../../utils';
 import { getDetailDoctorByIdFromApi } from '../../../services/userService';
 import DoctorSchedule from './DoctorSchedule';
+import DoctorExtraInfor from './DoctorExtraInfor';
 
 
 class DetailDoctor extends Component {
@@ -33,7 +34,7 @@ class DetailDoctor extends Component {
         let nameVi = '', nameEn = '';
         let { language } = this.props;
         let { detailDoctor } = this.state;
-        console.log('check state detail doctor', detailDoctor);
+
         if (detailDoctor && detailDoctor.positionData) {
             nameVi = `${detailDoctor.positionData.valueVi} - ${detailDoctor.lastName} ${detailDoctor.firstName}`;
             nameEn = `${detailDoctor.positionData.valueEn} - ${detailDoctor.firstName} ${detailDoctor.lastName}`;
@@ -67,7 +68,9 @@ class DetailDoctor extends Component {
                             />
                         </div>
                         <div className='content-right'>
-                            <button className='btn-booking'>Đặt lịch khám</button>
+                            <button className='btn-booking'><DoctorExtraInfor
+                                doctorIdFromParent={this.state.doctorId}
+                            /></button>
                         </div>
                     </div>
                     <div className='detail-infor-doctor'>

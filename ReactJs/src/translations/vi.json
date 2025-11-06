@@ -90,7 +90,34 @@
             "schedule": "Lịch khám",
             "detail-info": "Thông tin chi tiết",
             "comments": "Đánh giá",
-            "book-appointment": "Đặt lịch khám"
+            "book-appointment": "Đặt lịch khám",
+            "price": "Giá khám",
+            "payment": "Phương thức thanh toán",
+            "address-clinic": "Địa chỉ phòng khám",
+            "name-clinic": "Tên phòng khám",
+            "see-detail": "Xem chi tiết",
+            "hide-detail": "Ẩn bớt",
+            "note": "Ghi chú"
+        },
+        "booking-modal": {
+            "title": "Xác nhận thông tin đặt lịch khám",
+            "fullname": "Họ và tên",
+            "phone-number": "Số điện thoại",
+            "email": "Email",
+            "address": "Địa chỉ",
+            "reason": "Lý do khám",
+            "date": "Ngày khám",
+            "time": "Thời gian",
+            "price": "Giá khám",
+            "btn-confirm": "Xác nhận",
+            "btn-cancel": "Hủy",
+            "close": "Đóng",
+            "success-message": "Đặt lịch khám thành công! Vui lòng kiểm tra email để xác nhận.",
+            "birthday": "Ngày sinh",
+            "note": "Ghi chú",
+            "gender": "Giới tính",
+            "free-booking": "Miễn phí đặt lịch"
+            
         }
     },
 
@@ -114,3 +141,4 @@
         }
     }
 }
+

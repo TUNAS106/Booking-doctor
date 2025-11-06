@@ -89,7 +89,33 @@
             "schedule": "Examination schedule",
             "detail-info": "Detailed information",
             "comments": "Reviews",
-            "book-appointment": "Book an appointment"
+            "book-appointment": "Book an appointment",
+            "address-clinic": "Clinic Address",
+            "price": "Examination Price",
+            "see-detail": "See details",
+            "hide-detail": "Hide details",
+            "note": "Note",
+            "payment": "Payment Method"
+        },
+        "booking-modal": {
+            "title": "Confirm Appointment Booking Information",
+            "fullname": "Full Name",
+            "phone-number": "Phone Number",
+            "email": "Email",
+            "address": "Address",
+            "reason": "Reason for Examination",
+            "date": "Examination Date",
+            "time": "Examination Time",
+            "price": "Examination Price",
+            "btn-confirm": "Confirm",
+            "btn-cancel": "Cancel",
+            "close": "Close",
+            "success-message": "Appointment booked successfully! Please check your email for confirmation.",
+            "birthday": "Birthday",
+            "note": "Note",
+            "free-booking": "Free Booking",
+            "choose-gender": "Choose Gender",
+            "gender": "Gender"
         }
     },
 

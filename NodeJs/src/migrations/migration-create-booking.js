@@ -21,7 +21,10 @@ module.exports = {
                 type: Sequelize.INTEGER
             },
             date: {
-                type: Sequelize.DATE
+                type: Sequelize.STRING
+            },
+            gender: {
+                type: Sequelize.STRING
             },
             timeType: {
                 type: Sequelize.STRING

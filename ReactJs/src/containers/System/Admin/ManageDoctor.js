@@ -124,6 +124,28 @@ class ManageDoctor extends Component {
 
         if (res && res.errCode === 0 && Array.isArray(res.data.markdownData) && res.data.markdownData.length > 0) {
             const lastMarkdown = res.data.markdownData[res.data.markdownData.length - 1];
+
+            if (res.data && res.data.doctorInfoData) {
+
+                this.setState({
+                    selectedPrice: this.state.listPrice.find(item => item.value === res.data.doctorInfoData.priceId) || '',
+                    selectedPayment: this.state.listPayment.find(item => item.value === res.data.doctorInfoData.paymentId) || '',
+                    selectedProvince: this.state.listProvince.find(item => item.value === res.data.doctorInfoData.provinceId) || '',
+                    nameClinic: res.data.doctorInfoData.nameClinic || '',
+                    addressClinic: res.data.doctorInfoData.addressClinic || '',
+                    note: res.data.doctorInfoData.note || '',
+                });
+            } else {
+
+                this.setState({
+                    selectedPrice: '',
+                    selectedPayment: '',
+                    selectedProvince: '',
+                    nameClinic: '',
+                    addressClinic: '',
+                    note: '',
+                });
+            }
             this.setState({
                 contentMarkdown: lastMarkdown.contentMarkdown || '',
                 contentHTML: lastMarkdown.contentHTML || '',
@@ -135,6 +157,12 @@ class ManageDoctor extends Component {
                 contentMarkdown: '',
                 contentHTML: '',
                 description: '',
+                selectedPrice: '',
+                selectedPayment: '',
+                selectedProvince: '',
+                nameClinic: '',
+                addressClinic: '',
+                note: '',
                 hasOldData: false,
             });
         }

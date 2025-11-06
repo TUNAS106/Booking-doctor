@@ -13,6 +13,10 @@ module.exports = (sequelize, DataTypes) => {
             Allcode.hasMany(models.User, { foreignKey: 'positionId', targetKey: 'keyMap', as: 'positionData' });
             Allcode.hasMany(models.User, { foreignKey: 'genderId', targetKey: 'keyMap', as: 'genderData' });
             Allcode.hasMany(models.Schedule, { foreignKey: 'timeType', targetKey: 'keyMap', as: 'timeTypeData' });
+
+            Allcode.hasMany(models.Doctor_Infor, { foreignKey: 'priceId', targetKey: 'keyMap', as: 'priceData' });
+            Allcode.hasMany(models.Doctor_Infor, { foreignKey: 'provinceId', targetKey: 'keyMap', as: 'provinceData' });
+            Allcode.hasMany(models.Doctor_Infor, { foreignKey: 'paymentId', targetKey: 'keyMap', as: 'paymentData' });
         }
     };
     Allcode.init({

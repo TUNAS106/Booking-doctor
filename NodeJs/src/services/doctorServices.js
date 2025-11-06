@@ -116,6 +116,17 @@ let getDetailDoctorById = (id) => {
                         attributes: ["description", "contentHTML", "contentMarkdown"]
                     },
                     { model: db.Allcode, as: "positionData", attributes: ["valueEn", "valueVi"] },
+                    {
+                        model: db.Doctor_Infor, as: "doctorInfoData",
+                        attributes: {
+                            exclude: ["id", "doctorId", "createdAt", "updatedAt"]
+                        },
+                        include: [
+                            { model: db.Allcode, as: "priceData", attributes: ["valueEn", "valueVi"] },
+                            { model: db.Allcode, as: "provinceData", attributes: ["valueEn", "valueVi"] },
+                            { model: db.Allcode, as: "paymentData", attributes: ["valueEn", "valueVi"] },
+                        ]
+                    }
                 ],
                 raw: false,
                 nest: true,
@@ -216,11 +227,96 @@ let getScheduleByDate = (doctorId, date) => {
     });
 };
 
+let getExtraInforDoctorById = (doctorId) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            if (!doctorId) {
+                return resolve({
+                    errCode: 1,
+                    errMessage: "Missing parameter"
+                });
+            }
+            let doctorExtraInfor = await db.Doctor_Infor.findOne({
+                where: { doctorId: doctorId },
+                attributes: { exclude: ["id", "doctorId", "createdAt", "updatedAt"] },
+                include: [
+                    { model: db.Allcode, as: "priceData", attributes: ["valueEn", "valueVi"] },
+
+                    { model: db.Allcode, as: "paymentData", attributes: ["valueEn", "valueVi"] },
+                ],
+                raw: false,
+                nest: true,
+
+            });
+
+            resolve({
+                errCode: doctorExtraInfor ? 0 : 2,
+                data: doctorExtraInfor || {},
+                errMessage: doctorExtraInfor ? "OK" : "Doctor not found"
+            });
+
+        } catch (e) {
+            reject(e);
+        }
+    });
+};
+
+let getProfileDoctorById = (doctorId) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            if (!doctorId) {
+                return resolve({
+                    errCode: 1,
+                    errMessage: "Missing parameter"
+                });
+            }
+            let doctor = await db.User.findOne({
+                where: { id: doctorId, roleId: 'R2' },
+                attributes: { exclude: ["password"] },
+                include: [
+                    {
+                        model: db.Markdown,
+                        as: "markdownData",
+                        attributes: ["description", "contentHTML", "contentMarkdown"]
+                    },
+                    { model: db.Allcode, as: "positionData", attributes: ["valueEn", "valueVi"] },
+                    {
+                        model: db.Doctor_Infor, as: "doctorInfoData",
+                        attributes: {
+                            exclude: ["id", "doctorId", "createdAt", "updatedAt"]
+                        },
+                        include: [
+                            { model: db.Allcode, as: "priceData", attributes: ["valueEn", "valueVi"] },
+                            { model: db.Allcode, as: "provinceData", attributes: ["valueEn", "valueVi"] },
+                            { model: db.Allcode, as: "paymentData", attributes: ["valueEn", "valueVi"] },
+                        ]
+                    }
+                ],
+                raw: false,
+                nest: true,
+            });
+
+            if (doctor && doctor.image) {
+                doctor.image = Buffer.from(doctor.image, 'base64').toString('binary');
+            }
+            resolve({
+                errCode: doctor ? 0 : 2,
+                data: doctor || {},
+                errMessage: doctor ? "OK" : "Doctor not found"
+            });
+        } catch (e) {
+            reject(e);
+        }
+    });
+}
+
 export default {
     getTopDoctorHome,
     getAllDoctors,
     saveDetailInforDoctor,
     getDetailDoctorById,
     bulkCreateSchedule,
-    getScheduleByDate
+    getScheduleByDate,
+    getExtraInforDoctorById,
+    getProfileDoctorById
 };
